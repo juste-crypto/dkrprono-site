@@ -7,33 +7,64 @@ body {
   color: #f4f4f4;
   text-align: center;
 }
+
 @keyframes gradientBG {
   0% {background-position: 0% 50%;}
   50% {background-position: 100% 50%;}
   100% {background-position: 0% 50%;}
 }
+
 .hero {
   padding: 2rem;
 }
+
 #site-title {
   font-size: 3rem;
+  font-weight: bold;
   animation: pulse 2s infinite;
-  background: linear-gradient(to right, #ffcc00, #ff6600, #ff0000);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* Remplacé le dégradé de texte par une couleur solide compatible */
+  color: #ffcc00;
+  text-shadow: 
+    0 0 10px #ffcc00,
+    0 0 20px #ff6600,
+    0 0 30px #ff0000;
+  margin: 0;
 }
+
 @keyframes pulse {
-  0%,100% {transform: scale(1);}
-  50% {transform: scale(1.1);}
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 
+      0 0 10px #ffcc00,
+      0 0 20px #ff6600,
+      0 0 30px #ff0000;
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 
+      0 0 15px #ffcc00,
+      0 0 25px #ff6600,
+      0 0 35px #ff0000;
+  }
 }
+
 .subtitle {
   font-size: 1.2rem;
   margin-top: 0.5rem;
   opacity: 0.9;
+  color: #f4f4f4;
 }
+
 .offers {
   padding: 2rem;
 }
+
+.offers h2 {
+  color: #ffcc00;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -41,21 +72,41 @@ body {
   gap: 1rem;
   margin-top: 1rem;
 }
+
 .card {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,204,0,0.3);
   border-radius: 12px;
   padding: 1.5rem;
   width: 200px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
+
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 20px rgba(255,204,0,0.3);
+  border-color: #ffcc00;
+  background: rgba(255,255,255,0.15);
 }
+
+.card h3 {
+  color: #ffcc00;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.card p {
+  color: #f4f4f4;
+  font-size: 1.1rem;
+}
+
 .note {
   margin-top: 1rem;
   font-style: italic;
+  color: #cccccc;
 }
+
 .whatsapp-float {
   position: fixed;
   width: 60px;
@@ -69,14 +120,35 @@ body {
   font-size: 2rem;
   line-height: 60px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
   text-decoration: none;
+  z-index: 1000;
 }
+
 .whatsapp-float:hover {
   transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(37,211,102,0.4);
 }
+
 footer {
   padding: 1rem;
   font-size: 0.9rem;
   opacity: 0.7;
+  color: #cccccc;
+}
+
+/* Amélioration pour la responsivité */
+@media (max-width: 768px) {
+  #site-title {
+    font-size: 2.5rem;
+  }
+  
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card {
+    width: 280px;
+  }
 }
